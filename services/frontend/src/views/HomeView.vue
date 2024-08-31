@@ -1,9 +1,10 @@
 <script setup lang="ts">
-  import TheWelcome from '../components/TheWelcome.vue';
+  import { redirectToSpotifyAuthorize } from '../auth/auth'
+
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+      <button @click="redirectToSpotifyAuthorize()">Log in with Spotify</button>
   </main>
 </template>
