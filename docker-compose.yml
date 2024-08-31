@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+
+  backend:
+    build: ./services/backend
+    ports:
+      - ${BACKEND_PORT}:${BACKEND_PORT}
+    volumes:
+      - ./services/backend:/app
+    command: uvicorn src.main:app --reload --host 0.0.0.0 --port ${BACKEND_PORT}
+    env_file:
+      - .env
+
+  frontend:
+    build: ./services/frontend
+    ports:
+      - ${FRONTEND_PORT}:${FRONTEND_PORT}
+    volumes:
+      - './services/frontend:/app'
+      - '/app/node_modules'
+    command: npm run dev -- --host --port ${FRONTEND_PORT}
+    env_file:
+      - .env
+
+  db:
+    image: postgres:16.4
+    expose:
+      - ${POSTGRES_PORT}
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

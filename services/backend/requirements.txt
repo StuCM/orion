@@ -1,0 +1,6 @@
+aerich==0.7.2
+asyncpg==0.29.0
+bcrypt==4.2.0
+fastapi==0.112.2
+tortoise-orm==0.21.6
+uvicorn==0.30.6
