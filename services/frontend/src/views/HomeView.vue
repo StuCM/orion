@@ -1,5 +1,10 @@
 <script setup lang="ts">
-  import { redirectToSpotifyAuthorize } from '../auth/auth'
+  import { onMounted } from 'vue';
+import { redirectToSpotifyAuthorize, checkForToken } from '../auth/auth'
+
+  onMounted(() => {
+    checkForToken()
+  })
 
 </script>
 

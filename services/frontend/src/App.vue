@@ -1,6 +1,19 @@
 <script setup lang="ts">
   import { RouterLink, RouterView } from 'vue-router';
   import HomeView from './views/HomeView.vue';
+  import axios from 'axios'
+import { onMounted } from 'vue';
+
+  onMounted(async () => {
+    try {
+      const res = await axios.get('/')  
+      const msg = res.data
+      console.log("backend response", msg)
+    } catch (error) {
+      console.error(error)
+    }
+    
+  })
 </script>
 
 <template>

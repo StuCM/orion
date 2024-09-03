@@ -47,6 +47,11 @@ export async function checkForToken() {
 
     const updatedUrl = url.search ? url.href : url.href.replace('?', '');
     window.history.replaceState({}, document.title, updatedUrl);
+    console.log(token)
+    return token
+  }
+  else {
+    console.log("No Token")
   }
 }
   
@@ -65,7 +70,7 @@ export async function redirectToSpotifyAuthorize() {
     .replace(/\//g, '_');
 
   window.localStorage.setItem('code_verifier', code_verifier);
-
+  console.log(clientId)
   const authUrl = new URL(authorizationEndpoint)
   const params = {
     response_type: 'code',
